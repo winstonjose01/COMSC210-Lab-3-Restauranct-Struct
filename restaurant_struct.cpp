@@ -1,4 +1,5 @@
 # include <iostream>
+# include <limits>
 using namespace std;
 
 struct Restaurant {
@@ -32,11 +33,29 @@ Restaurant populateRestaurant() {
      cout << "Enter the pricing value for this restaurant ";
      getline(cin, temp.pricing_type);
      cout << "Enter the review rating (1 - 5) for this restaurant: ";
-     cin >> temp.review;
-     cin.ignore();
+     while (true) {
+        cin >> temp.review;
+        cin.ignore();
+
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Invalid input, Please the correct info";
+        }
+        else{
+            break;
+            }
+     }
+
 
 }
 
 void outputRestaurant (const Restaurant &rest){
-    
+    cout << "\t Name: " << rest.name;
+    cout << "\t Type of Dining: " << rest.dining_type;
+    cout << "\t Type of Cuisine: " << rest.dining_type;
+    cout << "\t Type of Pricing/Value :" << rest.pricing_type;
+    cout << "\t Review rating :" << rest.review;
+    cout << '\n';
+
 }
