@@ -1,7 +1,10 @@
+// COMSC-210 | Lab 3 | Winston Jose
+// https://github.com/winstonjose01/COMSC210-Lab-3-Restauranct-Struct
+
 # include <iostream>
-# include <limits>
 # include <iomanip>
 using namespace std;
+
 
 struct Restaurant {
     string name;
@@ -12,13 +15,15 @@ struct Restaurant {
 
 };
 
+
 Restaurant populateRestaurant();
 void outputRestaurant(const Restaurant &);
 void printHeader();
 
 int main() {
-    //Create 4 Restaurant object and populate
+    //Create 4 Restaurant object and populate with user input
     cout << "Enter information for the first restaurant\n";
+    //Pu
     Restaurant myRestaurant1 = populateRestaurant();
     cout << "\n------------------------------------------------";
     cout << "\nEnter information for the second restaurant\n";
@@ -38,13 +43,19 @@ int main() {
 return 0;
 }
 
+// populateRestaurant() prompts the user for input to populate the structs data
+// arguments: no arguments
+// returns: returns a struct
 Restaurant populateRestaurant() {
     Restaurant temp;
     int choice_type;
     int choice_value;
-    
+    // Prompts and assigns the name of the restaurant
     cout << "Enter the name of the restaurant: ";
     getline(cin,temp.name);
+
+    // Display options and assigns the type of establishment
+    // Contains validation the input is a number between 1-5
     cout << "\nEnter the type of dining establishment: ";
     cout << "\n1: Fine-Dining\n" << "2: Casual-Dining\n" << "3: Fast-food\n" << "4: Buffet\n" << "5: Cafe\n" << ">> ";
     cin >> choice_type;
@@ -63,8 +74,13 @@ Restaurant populateRestaurant() {
             break;
     }
     cin.ignore();
+    
+    //Prompts and assigns the type of cuisines
     cout << "\nEnter the type of cuisine: ";
     getline(cin, temp.cuisine_type);
+
+    // Display options and assigns the pricing values
+    // Contains validation the input is a number between 1-3
     cout << "\nEnter the pricing value for this restaurant: ";
     cout << "\n1: Fine-Dining ($$$)\n" << "2: Mid-Range($$)\n" << "3: Budget($)\n" << ">> ";
     while(true){
@@ -90,6 +106,9 @@ Restaurant populateRestaurant() {
             }
         else{break;}
     };
+
+    // Prompts and assigns the rating values
+    // Contains validation the input is a number between 1-5
     cout << "\nEnter the review rating (1 - 5) for this restaurant: ";
     while (true) {
         cin >> temp.review;
@@ -107,7 +126,10 @@ Restaurant populateRestaurant() {
     return temp;
 }
 
-void printHeader (){
+// printHeader() prints the header titles for the output display table
+// arguments: no arguments
+// returns: no return parameters
+void printHeader() {
     cout << left 
         << setw(20) << "Name" 
         << setw(22) << "Dining Type" 
@@ -124,7 +146,9 @@ void printHeader (){
         << endl;
 }
 
-
+// outputRestaurant() prints the struct's data in a table format
+// arguments: struct argument 'rest' of type Restaurant
+// returns: no returns
 void outputRestaurant (const Restaurant &rest){
     cout << left 
         << setw(20) << rest.name 
