@@ -18,9 +18,13 @@ void printHeader();
 
 int main() {
     //Create 4 Restaurant object and populate
+    cout << "Enter information for the first restaurant\n";
     Restaurant myRestaurant1 = populateRestaurant();
+    cout << "\nEnter information for the second restaurant\n";
     //Restaurant myRestaurant2 = populateRestaurant();
+    cout << "\nEnter information for the third restaurant\n";
     //Restaurant myRestaurant3 = populateRestaurant();
+    cout << "\nEnter information for the fourth restaurant\n";
     //Restaurant myRestaurant4 = populateRestaurant();
     printHeader();
     outputRestaurant(myRestaurant1);
@@ -33,15 +37,15 @@ return 0;
 
 Restaurant populateRestaurant() {
     Restaurant temp;
-    int input;
-     cout << "Enter the name of the restaurant: ";
-     getline(cin,temp.name);
-     cin.ignore();
-     cout << "1: Fine-Dining\n" << "2: Casual-Dining\n" << "3: Fast-food\n" << "4: Buffet\n" << "5: Cafe\n";
-     cout << "Enter the type of dining establishment: ";
-     //cout << "1: Fine-Dining" << "2: Casual-Dining\n"<< "3: Fast-food"<<"'4: Buffet" << "5: Cafe";
-     cin >> input;
-     switch(input){
+    int choice_type;
+    int choice_value;
+    
+    cout << "Enter the name of the restaurant: ";
+    getline(cin,temp.name);
+    cout << "\nEnter the type of dining establishment: ";
+    cout << "\n1: Fine-Dining\n" << "2: Casual-Dining\n" << "3: Fast-food\n" << "4: Buffet\n" << "5: Cafe\n" << ">> ";
+    cin >> choice_type;
+    switch(choice_type){
         case 1: temp.dining_type = "Fine-Dining"; 
         break;
         case 2: temp.dining_type = "Casual-Dining";
@@ -54,27 +58,27 @@ Restaurant populateRestaurant() {
         break;
         default: temp.dining_type = "No input";
         break;
-     }
-     cin.ignore();
-     cout << "Enter the type of cuisine: ";
-     getline(cin, temp.cuisine_type);
-     cin.ignore();
-     cout << "Enter the pricing value for this restaurant: ";
-     getline(cin, temp.pricing_type);
-     cout << "Enter the review rating (1 - 5) for this restaurant: ";
-     while (true) {
+    }
+    cin.ignore();
+    cout << "\nEnter the type of cuisine: ";
+    getline(cin, temp.cuisine_type);
+    cout << "\nEnter the pricing value for this restaurant: ";
+    case ()
+    getline(cin, temp.pricing_type);
+    cout << "\nEnter the review rating (1 - 5) for this restaurant: ";
+    while (true) {
         cin >> temp.review;
         cin.ignore();
-
         if(cin.fail()){
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            cout << "Invalid input, Please the correct info";
+            cin.ignore();
+            cout << "Invalid input, Please the correct input";
         }
-        else{
-            break;
+        else if (temp.review < 0 || temp.review > 5) {
+            cout << "Invalid input, Please enter a number between 1 - 5: ";
             }
-     }
+        else{break;}
+        }
     return temp;
 }
 
