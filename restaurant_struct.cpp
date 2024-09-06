@@ -20,20 +20,20 @@ int main() {
     //Create 4 Restaurant object and populate
     cout << "Enter information for the first restaurant\n";
     Restaurant myRestaurant1 = populateRestaurant();
-    cout << "------------------------------------------------";
+    cout << "\n------------------------------------------------";
     cout << "\nEnter information for the second restaurant\n";
     Restaurant myRestaurant2 = populateRestaurant();
-    cout << "------------------------------------------------";
+    cout << "\n------------------------------------------------";
     cout << "\nEnter information for the third restaurant\n";
     Restaurant myRestaurant3 = populateRestaurant();
-    cout << "------------------------------------------------";
+    cout << "\n------------------------------------------------";
     cout << "\nEnter information for the fourth restaurant\n";
-    //Restaurant myRestaurant4 = populateRestaurant();
+    Restaurant myRestaurant4 = populateRestaurant();
     printHeader();
     outputRestaurant(myRestaurant1);
-    //outputRestaurant(myRestaurant2);
-    //outputRestaurant(myRestaurant3);
-    //outputRestaurant(myRestaurant4);
+    outputRestaurant(myRestaurant2);
+    outputRestaurant(myRestaurant3);
+    outputRestaurant(myRestaurant4);
 
 return 0;
 }
@@ -67,18 +67,29 @@ Restaurant populateRestaurant() {
     getline(cin, temp.cuisine_type);
     cout << "\nEnter the pricing value for this restaurant: ";
     cout << "\n1: Fine-Dining ($$$)\n" << "2: Mid-Range($$)\n" << "3: Budget($)\n" << ">> ";
-    cin >> choice_value;
-    switch(choice_value){
-        case 1: temp.pricing_type = "$$$";
+    while(true){
+        cin >> choice_value;
+        cin.ignore();
+        switch(choice_value){
+            case 1: temp.pricing_type = "$$$";
+                break;
+            case 2: temp.pricing_type = "$$";
+                break;
+            case 3: temp.pricing_type = "$";
+                break;
+            default: temp.pricing_type = "(No_input)";
             break;
-        case 2: temp.pricing_type = "$$";
-            break;
-        case 3: temp.pricing_type = "$";
-            break;
-        default: temp.pricing_type = "(No_input)";
-        break;
-    }
-    cin.ignore();
+        }
+        if (cin.fail()){
+            cin.clear();
+            cin.ignore();
+            cout << "Invalid input, Please the enter a number: ";
+        }
+        else if (choice_value < 0 || choice_value > 3) {
+            cout << "Invalid input, Please enter a number between 1 - 3: ";
+            }
+        else{break;}
+    };
     cout << "\nEnter the review rating (1 - 5) for this restaurant: ";
     while (true) {
         cin >> temp.review;
@@ -86,7 +97,7 @@ Restaurant populateRestaurant() {
         if(cin.fail()){
             cin.clear();
             cin.ignore();
-            cout << "Invalid input, Please the correct input";
+            cout << "Invalid input, Please enter a number";
         }
         else if (temp.review < 0 || temp.review > 5) {
             cout << "Invalid input, Please enter a number between 1 - 5: ";
