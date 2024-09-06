@@ -33,13 +33,32 @@ return 0;
 
 Restaurant populateRestaurant() {
     Restaurant temp;
+    int input;
      cout << "Enter the name of the restaurant: ";
      getline(cin,temp.name);
      cin.ignore();
+     cout << "1: Fine-Dining\n" << "2: Casual-Dining\n" << "3: Fast-food\n" << "4: Buffet\n" << "5: Cafe\n";
      cout << "Enter the type of dining establishment: ";
-     getline(cin, temp.dining_type);
+     //cout << "1: Fine-Dining" << "2: Casual-Dining\n"<< "3: Fast-food"<<"'4: Buffet" << "5: Cafe";
+     cin >> input;
+     switch(input){
+        case 1: temp.dining_type = "Fine-Dining"; 
+        break;
+        case 2: temp.dining_type = "Casual-Dining";
+        break;
+        case 3: temp.dining_type = "Fast-food";
+        break;
+        case 4: temp.dining_type = "Buffet";
+        break;
+        case 5: temp.dining_type = "Cafe";
+        break;
+        default: temp.dining_type = "No input";
+        break;
+     }
+     cin.ignore();
      cout << "Enter the type of cuisine: ";
      getline(cin, temp.cuisine_type);
+     cin.ignore();
      cout << "Enter the pricing value for this restaurant: ";
      getline(cin, temp.pricing_type);
      cout << "Enter the review rating (1 - 5) for this restaurant: ";
