@@ -5,17 +5,16 @@
 # include <iomanip>
 using namespace std;
 
-
 struct Restaurant {
     string name;
-    string dining_type; //Fast-food, Casual, Coffee-Shop, 
-    string cuisine_type; // Mexican, Chinese, etc.
-    string pricing_type; // Budget, Mid-range, Fine-dining
-    int review;
+    string dining_type;     //Fast-food, Casual, Coffee-Shop, 
+    string cuisine_type;    // Mexican, Chinese, etc.
+    string pricing_type;    // Budget($), Mid-range($$), Fine-dining ($$$)
+    int review;             // Rating 1-5
 
 };
 
-
+//Function declarations
 Restaurant populateRestaurant();
 void outputRestaurant(const Restaurant &);
 void printHeader();
@@ -34,6 +33,8 @@ int main() {
     cout << "\n------------------------------------------------";
     cout << "\nEnter information for the fourth restaurant\n";
     Restaurant myRestaurant4 = populateRestaurant();
+    
+    // Functions to print the table header and structs
     printHeader();
     outputRestaurant(myRestaurant1);
     outputRestaurant(myRestaurant2);
